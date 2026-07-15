@@ -40,12 +40,12 @@ and a clear, specific ask: suspend the instance. Also flagged the Google Cloud S
 ## Skills this actually demonstrates
 
 
-Email header / metadata analysis — reading SPF, DKIM, Return-Path, and routing information to separate real sender info from spoofed display info
-Pattern recognition across a dataset — spotting that a DGA was in use, and that a shared IP address was the real common thread underneath dozens of seemingly unrelated domains
-Basic encoding/evasion awareness — understanding why Base64 was being used and decoding it to get at the real payload
-Tool-building to scale a manual process — recognized a repetitive task and built something to automate the extraction, then iterated on it
-Writing a technical incident report for a real audience — translating raw findings into a report a hosting provider's abuse desk could act on, not just a list of complaints
-Judgment under ambiguity — correctly identifying which data points were real leads and which were noise (the compromised third-party domain)
+_Email header / metadata analysis_ — reading SPF, DKIM, Return-Path, and routing information to separate real sender info from spoofed display info
+_Pattern recognition across a dataset_ — spotting that a DGA was in use, and that a shared IP address was the real common thread underneath dozens of seemingly unrelated domains
+_Basic encoding/evasion awareness_ — understanding why Base64 was being used and decoding it to get at the real payload
+_Tool-building to scale a manual process_ — recognized a repetitive task and built something to automate the extraction, then iterated on it
+_Writing a technical incident report for a real audience_ — translating raw findings into a report a hosting provider's abuse desk could act on, not just a list of complaints
+_Judgment under ambiguity_ — correctly identifying which data points were real leads and which were noise (the compromised third-party domain)
 
 
 ## Status
