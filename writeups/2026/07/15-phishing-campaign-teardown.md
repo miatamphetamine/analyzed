@@ -12,28 +12,28 @@ Classic credential/payment harvesting phishing — but run at real scale, with t
 
 ## What I actually did
 
-# 1. Started reading the raw email headers, not just the message.
+### 1. Started reading the raw email headers, not just the message.
 Every email has hidden technical metadata attached — where it actually originated, what server sent it, whether it passed or failed authentication checks (SPF/DKIM, which are basically ways email providers verify "does this sender actually own the domain it claims to be from"). 
 I learned to read that metadata instead of just looking at the visible sender name, which is trivial to fake.
 
-# 2. Noticed the emails were using a consistent evasion trick.
+### 2. Noticed the emails were using a consistent evasion trick.
 The body of each email was encoded in Base64 — a way of scrambling text so it doesn't visually contain the words or links a spam filter would flag. 
 Once decoded, every email led to a link on storage.googleapis.com — Google's cloud storage service, being abused to host fake payment pages because a Google-owned domain looks trustworthy and slips past a lot of filters that would flag a sketchy .ru or .biz domain instantly.
 
-# 3. Built a tracking tool instead of doing it by hand.
+### 3. Built a tracking tool instead of doing it by hand.
 Claude & I built a web-based incident log where I could paste in a raw email and it would automatically pull out the useful fields — sending domain, originating IP address, and (later) auto-decode the Base64 body to grab the bucket name. 
 This turned each new email from a five-minute manual dig into a paste-and-go entry.
 
-# 4. Found the pattern that mattered.
+### 4. Found the pattern that mattered.
 Individually, the emails looked like they came from dozens of different random domains — that's on purpose, it's called a domain generation algorithm (DGA), 
 used specifically to make each email look unrelated to the last one so spam filters can't just blocklist one domain and catch everything. 
 But when I aggregated all 65 incidents, one originating IP address showed up behind 53 of them — meaning nearly the entire campaign, despite looking scattered on the surface, was routing through a single server.
 
-# 5. Verified before acting on it.
+### 5. Verified before acting on it.
 Not every unusual detail in the data was actually a lead. One domain that showed up looked like it belonged to an unrelated legitimate business — I recognized that as a compromised or abused third party rather than part of the operation, and didn't treat it as a target. 
 Knowing what not to chase is part of the job.
 
-# 6. Wrote and filed a real abuse report.
+### 6. Wrote and filed a real abuse report.
 Once I had the pattern, I wrote a formal complaint to the hosting provider (HostingDunyam, Turkey) that owns the IP address in question — laying out the specific IP, the volume of abuse (53 documented incidents), the technical fingerprint tying them together, 
 and a clear, specific ask: suspend the instance. Also flagged the Google Cloud Storage buckets being abused directly to Google.
 
