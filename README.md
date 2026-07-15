@@ -8,4 +8,4 @@ and filing real abuse reports as I go. Writeups below.
 
 ## Writeups
 
-- [Tracking and Reporting an Organized Phishing Campaign](writeups/2026-07-15-phishing-campaign-teardown.md) — July 2026
+- [Tracking and Reporting an Organized Phishing Campaign](writeups/2026/07/15-phishing-campaign-teardown.md) — July 2026
